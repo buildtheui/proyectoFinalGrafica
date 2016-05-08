@@ -1,0 +1,20 @@
+{
+    "assets": {
+        "hero_spritesheet": { "type": "spritesheet", "source": "assets/images/player.png", "frame_width": 40, "frame_height": 40 },
+        "weapon_image": { "type": "image", "source": "assets/images/attack-icon.png" },        
+        "goal": { "type": "image", "source": "assets/images/goal.png" },        
+        "potion_image": { "type": "image", "source": "assets/images/potion.png" },
+        "chest_image": { "type": "image", "source": "assets/images/chest.png" },
+                
+        "level_tileset": { "type": "image", "source": "assets/images/terrains.png" },
+        "level_tilemap": { "type": "tilemap", "source": "assets/maps/mapa.json" }
+    },
+    "groups": [
+        "items",        
+        "heroes"
+    ],
+    "map": {
+        "key": "level_tilemap",
+        "tilesets": ["level_tileset"]
+    }
+}
