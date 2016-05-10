@@ -67,7 +67,7 @@ function createModals(item, hero) {
             ]
    });
 
-reg.modal.createModal({
+    reg.modal.createModal({
             type:"modal2",
             includeBackground: true,
             modalCloseOnInput: false,

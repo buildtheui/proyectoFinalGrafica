@@ -24,7 +24,7 @@ gameModal = function (game) {
             var type = options.type || ''; // must be unique
             var includeBackground = options.includeBackground; // maybe not optional
             var backgroundColor = options.backgroundColor || "0x000000";
-            var backgroundOpacity = options.backgroundOpacity === undefined ? 0.6 : options.backgroundOpacity;
+            var backgroundOpacity = options.backgroundOpacity === undefined ? 0.7 : options.backgroundOpacity;
             var modalCloseOnInput = options.modalCloseOnInput || false;
             var modalBackgroundCallback = options.modalBackgroundCallback || false;
             var vCenter = options.vCenter || true;
