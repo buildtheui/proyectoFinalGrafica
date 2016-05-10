@@ -24,7 +24,7 @@ graficaInteractiva.LoadingState.prototype.preload = function () {
         if (assets.hasOwnProperty(asset_key)) {
             asset = assets[asset_key];
             switch (asset.type) {
-            // en caso de ser un objeto del mapa el primes case lo carga
+            // en caso de ser un objeto del mapa el primer caso lo carga
             case "image":
                 this.load.image(asset_key, asset.source);
                 break;

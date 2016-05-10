@@ -39,11 +39,11 @@
                  "gid":15,
                  "height":40,
                  "id":10,
-                 "name":"vault",
+                 "name":"demon",
                  "properties":
                     {
                      "group":"items",
-                     "texture":"chest_image"
+                     "texture":"demon_image"
                     },
                  "propertytypes":
                     {
@@ -65,7 +65,7 @@
                  "properties":
                     {
                      "group":"items",
-                     "texture":"hero_spritesheet"
+                     "texture":"girl_image"
                     },
                  "propertytypes":
                     {
@@ -83,11 +83,11 @@
                  "gid":6,
                  "height":40,
                  "id":14,
-                 "name":"potion",
+                 "name":"dragon",
                  "properties":
                     {
                      "group":"items",
-                     "texture":"potion_image"
+                     "texture":"dragon_image"
                     },
                  "propertytypes":
                     {
@@ -140,7 +140,7 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"terrains.png",
+         "image":"..\/Documents\/Grafica interactiva\/proyectoFinalGrafica\/assets\/images\/terrains.png",
          "imageheight":80,
          "imagewidth":320,
          "margin":0,

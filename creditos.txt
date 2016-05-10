@@ -1,0 +1,9 @@
+http://i.imgur.com/oorjG.png //player
+http://2.bp.blogspot.com/-032eKLfbpa0/UBQYiI_VTKI/AAAAAAAAAM0/fs40kFvrL-c/s1600/sprites2.png // girl
+http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/ // character generator
+
+http://opengameart.org/ // general characters
+
+http://nightlycoding.com/index.php/2015/02/phaser-io-modal-creator/ // modal
+
+http://codeliberation.github.io/CLF-slides/Classes_and_Workshops/HTML5_and_JavaScript/2014_Web_Storytelling/7_JavaScript_and_Phaser_3.pdf //phaser tutorial

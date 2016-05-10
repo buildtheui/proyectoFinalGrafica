@@ -855,22 +855,22 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object id="10" name="vault" type="item" gid="15" x="39" y="401" width="40" height="40">
+  <object id="10" name="demon" type="item" gid="15" x="39" y="401" width="40" height="40">
    <properties>
     <property name="group" value="items"/>
-    <property name="texture" value="chest_image"/>
+    <property name="texture" value="demon_image"/>
    </properties>
   </object>
   <object id="12" name="win" type="item" gid="16" x="1039" y="439" width="40" height="40">
    <properties>
     <property name="group" value="items"/>
-    <property name="texture" value="hero_spritesheet"/>
+    <property name="texture" value="girl_image"/>
    </properties>
   </object>
-  <object id="14" name="potion" type="item" gid="6" x="802" y="40" width="40" height="40">
+  <object id="14" name="dragon" type="item" gid="6" x="802" y="40" width="40" height="40">
    <properties>
     <property name="group" value="items"/>
-    <property name="texture" value="potion_image"/>
+    <property name="texture" value="dragon_image"/>
    </properties>
   </object>
   <object id="15" name="hero" type="hero" gid="14" x="119" y="80" width="40" height="40">

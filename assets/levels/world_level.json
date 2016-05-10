@@ -2,9 +2,11 @@
     "assets": {
         "hero_spritesheet": { "type": "spritesheet", "source": "assets/images/player.png", "frame_width": 40, "frame_height": 40 },
         "weapon_image": { "type": "image", "source": "assets/images/attack-icon.png" },        
-        "goal": { "type": "image", "source": "assets/images/goal.png" },        
-        "potion_image": { "type": "image", "source": "assets/images/potion.png" },
-        "chest_image": { "type": "image", "source": "assets/images/chest.png" },
+        "girl_image": { "type": "image", "source": "assets/images/girl.png" },        
+        "dragon_image": { "type": "image", "source": "assets/images/dragon.png" },
+        "demon_image": { "type": "image", "source": "assets/images/demon.png" },
+        "si": { "type": "image", "source": "assets/images/si.png" },
+        "no": { "type": "image", "source": "assets/images/no.png" },
                 
         "level_tileset": { "type": "image", "source": "assets/images/terrains.png" },
         "level_tilemap": { "type": "tilemap", "source": "assets/maps/mapa.json" }
