@@ -231,7 +231,7 @@ function createModals(item, hero) {
                       {
                             type: "image",
                             content: "princess",
-                            offsetY: -50
+                            offsetY: -70
                         }
                     ]
                 });
