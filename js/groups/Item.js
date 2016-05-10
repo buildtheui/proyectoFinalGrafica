@@ -55,8 +55,13 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
                 hero.walking_speed = 0;
                 reg.modal.showModal("modal4");
                 setTimeout(
-                    function restart(){
+                    function dialog1(){
                         reg.modal.hideModal("modal4");
+                    },
+                5000);
+                setTimeout(
+                    function dialog2(){
+                        reg.modal.showModal("modal5");
                     },
                 5000);
             break;
@@ -209,7 +214,7 @@ function createModals(item, hero) {
                     ]
                 });
 
-            /// ventana modal 3
+            /// ventana modal 4
             reg.modal.createModal({
                     type:"modal4",
                     includeBackground: true,
@@ -227,6 +232,27 @@ function createModals(item, hero) {
                             type: "image",
                             content: "princess",
                             offsetY: -50
+                        }
+                    ]
+                });
+             /// ventana modal 5
+            reg.modal.createModal({
+                    type:"modal5",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
+                            type: "text",
+                            content: "#%&&/%&/(&//&%&/@!",
+                            fontFamily: "Luckiest Guy",
+                            fontSize: 45,
+                            color: "0xFEFF49",
+                            offsetY: 50
+                        },
+                      {
+                            type: "image",
+                            content: "hero",
+                            offsetY: -150
                         }
                     ]
                 });
