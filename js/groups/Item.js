@@ -15,8 +15,8 @@ graficaInteractiva.Item.prototype.constructor = graficaInteractiva.Item;
 
 
 
-function createModals(item) {
-   var item = item;
+function createModals(item, hero) {
+   var item = item, hero = hero;
     reg.modal.createModal({
             type:"modal1",
             includeBackground: false,
@@ -34,7 +34,7 @@ function createModals(item) {
             },
                 {
                     type: "text",
-                    content: "¿Se uso animante CC para hacer este juego?",
+                    content: "¿Darias tu vida por la princesa?",
                     fontFamily: "Luckiest Guy",
                     fontSize: 20,
                     color: "0xFEFF49",
@@ -63,8 +63,10 @@ function createModals(item) {
                             });
                         promise.then(function(result) {
                               reg.modal.hideModal("modal1");
+                              hero.walking_speed = 150;
                             }, function(err) {
                               reg.modal.hideModal("modal1");
+                              hero.walking_speed = 150;
                             });
                         
 
@@ -90,7 +92,7 @@ reg.modal.createModal({
             },
                 {
                     type: "text",
-                    content: "¿Se uso actionScript en este juego?",
+                    content: "¿Darias lo que tienes por ella?",
                     fontFamily: "Luckiest Guy",
                     fontSize: 20,
                     color: "0xFEFF49",
@@ -104,7 +106,7 @@ reg.modal.createModal({
                     offsetX: -80,
                     contentScale: 0.6,
                     callback: function () {
-                      reg.kill = false;
+                      
                     }
             },
                 {
@@ -119,8 +121,10 @@ reg.modal.createModal({
                             });
                         promise.then(function(result) {
                               reg.modal.hideModal("modal2");
+                              hero.walking_speed = 150;
                             }, function(err) {
                               reg.modal.hideModal("modal2");
+                              hero.walking_speed = 150;
                             });
                         
 
@@ -150,11 +154,14 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
         }
     } */
     reg.modal = new gameModal(game);
-    createModals(item);
+    createModals(item, hero);
+    console.log(hero);
     if(item.key =="demon_image"){
+        //hero.cursors.up._enabled = false;
+        hero.walking_speed = 0;
         reg.modal.showModal("modal1");
     }else{
-        reg.modal.showModal("modal1");
+        reg.modal.showModal("modal2");
     }
     
 
