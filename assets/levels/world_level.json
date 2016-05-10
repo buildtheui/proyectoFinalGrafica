@@ -9,6 +9,7 @@
         "si": { "type": "image", "source": "assets/images/si.png" },
         "no": { "type": "image", "source": "assets/images/no.png" },
         "gameover": { "type": "image", "source": "assets/images/gameover.png" },
+        "princess": { "type": "image", "source": "assets/images/princess2.png" },
 
                 
         "level_tileset": { "type": "image", "source": "assets/images/terrains.png" },

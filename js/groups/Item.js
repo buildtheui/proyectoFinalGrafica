@@ -13,7 +13,56 @@ graficaInteractiva.Item = function (game_state, name, position, properties) {
 graficaInteractiva.Item.prototype = Object.create(graficaInteractiva.Prefab.prototype);
 graficaInteractiva.Item.prototype.constructor = graficaInteractiva.Item;
 
+// el metodo update() es llamado en cada cuadro
+graficaInteractiva.Item.prototype.update = function () {
+    "use strict";
+    // when colliding with hero the item is collected
+    this.game_state.game.physics.arcade.collide(this, this.game_state.groups.heroes, this.collect_item, null, this);
 
+};
+
+graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
+    "use strict";
+   /* var stat;
+    // update hero stats according to item
+    
+    for (stat in this.stats) {
+        // update only if the stat is defined for this item
+        if (this.stats.hasOwnProperty(stat) && this.stats[stat]) {
+            hero.stats[stat] += this.stats[stat];
+        }
+    } */
+    reg.modal = new gameModal(game);
+    createModals(item, hero);
+    console.log(hero);
+    switch(item.key){
+        case "demon_image":
+             // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
+            hero.walking_speed = 0;
+            reg.modal.showModal("modal1");
+            break;
+        case "dragon_image":
+            // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
+            hero.walking_speed = 0;
+            reg.modal.showModal("modal2");
+            break;  
+        case "wall_image":
+            if( reg.wallDestroy == 2) {
+                this.kill();
+            }
+            break;
+        case "girl_image":
+                hero.walking_speed = 0;
+                reg.modal.showModal("modal4");
+                setTimeout(
+                    function restart(){
+                        reg.modal.hideModal("modal4");
+                    },
+                5000);
+            break;
+            
+    }
+};
 
 function createModals(item, hero) {
    var item = item, hero = hero;
@@ -159,46 +208,26 @@ function createModals(item, hero) {
                         }
                     ]
                 });
-};
 
-// el metodo update() es llamado en cada cuadro
-graficaInteractiva.Item.prototype.update = function () {
-    "use strict";
-    // when colliding with hero the item is collected
-    this.game_state.game.physics.arcade.collide(this, this.game_state.groups.heroes, this.collect_item, null, this);
-
-};
-
-graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
-    "use strict";
-   /* var stat;
-    // update hero stats according to item
-    
-    for (stat in this.stats) {
-        // update only if the stat is defined for this item
-        if (this.stats.hasOwnProperty(stat) && this.stats[stat]) {
-            hero.stats[stat] += this.stats[stat];
-        }
-    } */
-    reg.modal = new gameModal(game);
-    createModals(item, hero);
-    console.log(hero);
-    switch(item.key){
-        case "demon_image":
-             // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
-            hero.walking_speed = 0;
-            reg.modal.showModal("modal1");
-            break;
-        case "dragon_image":
-            // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
-            hero.walking_speed = 0;
-            reg.modal.showModal("modal2");
-            break;  
-        case "wall_image":
-            if( reg.wallDestroy == 2) {
-                this.kill();
-            }
-            break;
-            
-    }
+            /// ventana modal 3
+            reg.modal.createModal({
+                    type:"modal4",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
+                            type: "text",
+                            content: "Gracias por salvarme!\nEres el Amigo que toda\nprincesa debe tener!",
+                            fontFamily: "Luckiest Guy",
+                            fontSize: 30,
+                            color: "0xFEFF49",
+                            offsetY: 50
+                        },
+                      {
+                            type: "image",
+                            content: "princess",
+                            offsetY: -50
+                        }
+                    ]
+                });
 };
