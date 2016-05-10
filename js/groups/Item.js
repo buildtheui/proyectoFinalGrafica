@@ -1,5 +1,5 @@
 var graficaInteractiva = graficaInteractiva || {};
-var reg = {};
+var reg = { wallDestroy : 0 };
 graficaInteractiva.Item = function (game_state, name, position, properties) {
     "use strict";
     graficaInteractiva.Prefab.call(this, game_state, name, position, properties);
@@ -17,6 +17,8 @@ graficaInteractiva.Item.prototype.constructor = graficaInteractiva.Item;
 
 function createModals(item, hero) {
    var item = item, hero = hero;
+
+   //// ventana modal 1 ////
     reg.modal.createModal({
             type:"modal1",
             includeBackground: true,
@@ -48,7 +50,12 @@ function createModals(item, hero) {
                     offsetX: -80,
                     contentScale: 0.6,
                     callback: function () {
-                      reg.kill = false;
+                      // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
+                      // autemnta el 1 para eliminar la pared donde esta la reina
+                        reg.wallDestroy += 1;
+                        item.kill();                        
+                        reg.modal.hideModal("modal1");
+                        hero.walking_speed = 150;
                     }
             },
                 {
@@ -58,15 +65,19 @@ function createModals(item, hero) {
                     offsetX: 80,
                     contentScale: 0.6,
                     callback: function () {
-                        // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
-                        item.kill();                        
                         reg.modal.hideModal("modal1");
-                        hero.walking_speed = 150;
+                        reg.modal.showModal("modal3");
+                        setTimeout(
+                            function restart(){
+                                game.state.start("BootState", true, false, "assets/levels/world_level.json", "WorldState")
+                                },
+                            2500);  
                     }
                 }
             ]
    });
 
+    /// ventana modal 2 ///
     reg.modal.createModal({
             type:"modal2",
             includeBackground: true,
@@ -98,6 +109,12 @@ function createModals(item, hero) {
                     offsetX: -80,
                     contentScale: 0.6,
                     callback: function () {
+                        // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
+                        // autemnta el 1 para eliminar la pared donde esta la reina
+                        reg.wallDestroy += 1;
+                        item.kill();                        
+                        reg.modal.hideModal("modal2");
+                        hero.walking_speed = 150;
                       
                     }
             },
@@ -108,14 +125,40 @@ function createModals(item, hero) {
                     offsetX: 80,
                     contentScale: 0.6,
                     callback: function () {
-                        // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
-                        item.kill();                        
                         reg.modal.hideModal("modal2");
-                        hero.walking_speed = 150;
+                        reg.modal.showModal("modal3");
+                        setTimeout(
+                            function restart(){
+                                game.state.start("BootState", true, false, "assets/levels/world_level.json", "WorldState")
+                                },
+                            2500);                            
                     }
             }
             ]
-   });
+    });
+            
+            /// ventana modal 3
+            reg.modal.createModal({
+                    type:"modal3",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
+                            type: "text",
+                            content: "En serio man???",
+                            fontFamily: "Luckiest Guy",
+                            fontSize: 42,
+                            color: "0xFEFF49",
+                            offsetY: 50
+                        },
+                      {
+                            type: "image",
+                            content: "gameover",
+                            offsetY: -50,
+                            contentScale: 0.6
+                        }
+                    ]
+                });
 };
 
 // el metodo update() es llamado en cada cuadro
@@ -140,15 +183,22 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
     reg.modal = new gameModal(game);
     createModals(item, hero);
     console.log(hero);
-    if(item.key =="demon_image"){
-        // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
-        hero.walking_speed = 0;
-        reg.modal.showModal("modal1");
-    }else{
-        // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
-        hero.walking_speed = 0;
-        reg.modal.showModal("modal2");
+    switch(item.key){
+        case "demon_image":
+             // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
+            hero.walking_speed = 0;
+            reg.modal.showModal("modal1");
+            break;
+        case "dragon_image":
+            // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
+            hero.walking_speed = 0;
+            reg.modal.showModal("modal2");
+            break;  
+        case "wall_image":
+            if( reg.wallDestroy == 2) {
+                this.kill();
+            }
+            break;
+            
     }
-    
-
 };

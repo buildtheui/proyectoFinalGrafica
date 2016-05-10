@@ -7,3 +7,5 @@ http://opengameart.org/ // general characters
 http://nightlycoding.com/index.php/2015/02/phaser-io-modal-creator/ // modal
 
 http://codeliberation.github.io/CLF-slides/Classes_and_Workshops/HTML5_and_JavaScript/2014_Web_Storytelling/7_JavaScript_and_Phaser_3.pdf //phaser tutorial
+
+http://i221.photobucket.com/albums/dd22/djmid71/gameover_zpse663rlsp.png // gameover

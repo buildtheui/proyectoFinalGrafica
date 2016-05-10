@@ -5,8 +5,11 @@
         "girl_image": { "type": "image", "source": "assets/images/girl.png" },        
         "dragon_image": { "type": "image", "source": "assets/images/dragon.png" },
         "demon_image": { "type": "image", "source": "assets/images/demon.png" },
+        "wall_image": { "type": "image", "source": "assets/images/wall.png" },
         "si": { "type": "image", "source": "assets/images/si.png" },
         "no": { "type": "image", "source": "assets/images/no.png" },
+        "gameover": { "type": "image", "source": "assets/images/gameover.png" },
+
                 
         "level_tileset": { "type": "image", "source": "assets/images/terrains.png" },
         "level_tilemap": { "type": "tilemap", "source": "assets/maps/mapa.json" }
