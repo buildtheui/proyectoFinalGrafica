@@ -19,7 +19,7 @@ function createModals(item, hero) {
    var item = item, hero = hero;
     reg.modal.createModal({
             type:"modal1",
-            includeBackground: false,
+            includeBackground: true,
             modalCloseOnInput: false,
         itemsArr: [
                 {
@@ -58,26 +58,18 @@ function createModals(item, hero) {
                     offsetX: 80,
                     contentScale: 0.6,
                     callback: function () {
-                        var promise = new Promise(function(resolve, reject) {
-                                resolve(item.kill());
-                            });
-                        promise.then(function(result) {
-                              reg.modal.hideModal("modal1");
-                              hero.walking_speed = 150;
-                            }, function(err) {
-                              reg.modal.hideModal("modal1");
-                              hero.walking_speed = 150;
-                            });
-                        
-
+                        // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
+                        item.kill();                        
+                        reg.modal.hideModal("modal1");
+                        hero.walking_speed = 150;
                     }
-            }
+                }
             ]
    });
 
 reg.modal.createModal({
             type:"modal2",
-            includeBackground: false,
+            includeBackground: true,
             modalCloseOnInput: false,
         itemsArr: [
                 {
@@ -116,18 +108,10 @@ reg.modal.createModal({
                     offsetX: 80,
                     contentScale: 0.6,
                     callback: function () {
-                        var promise = new Promise(function(resolve, reject) {
-                                resolve(item.kill());
-                            });
-                        promise.then(function(result) {
-                              reg.modal.hideModal("modal2");
-                              hero.walking_speed = 150;
-                            }, function(err) {
-                              reg.modal.hideModal("modal2");
-                              hero.walking_speed = 150;
-                            });
-                        
-
+                        // elimina los mounstros, cierra la venta modal y de nuevo permite movimiento al jugador
+                        item.kill();                        
+                        reg.modal.hideModal("modal2");
+                        hero.walking_speed = 150;
                     }
             }
             ]
@@ -157,10 +141,12 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
     createModals(item, hero);
     console.log(hero);
     if(item.key =="demon_image"){
-        //hero.cursors.up._enabled = false;
+        // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
         hero.walking_speed = 0;
         reg.modal.showModal("modal1");
     }else{
+        // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
+        hero.walking_speed = 0;
         reg.modal.showModal("modal2");
     }
     
