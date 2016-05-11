@@ -316,7 +316,7 @@ function createModals(item, hero) {
                     itemsArr: [
                         {
                             type: "text",
-                            content: "Programador cansado... FIN",
+                            content: "... FIN",
                             fontFamily: "Luckiest Guy",
                             fontSize: 30,
                             color: "0xFEFF49",
