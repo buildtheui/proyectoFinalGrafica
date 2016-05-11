@@ -11,6 +11,8 @@
         "gameover": { "type": "image", "source": "assets/images/gameover.png" },
         "princess": { "type": "image", "source": "assets/images/princess2.png" },
         "hero": { "type": "image", "source": "assets/images/hero.png" },
+        "ahora_no": { "type": "image", "source": "assets/images/ahorano.jpg" },
+        "c_l_supo": { "type": "image", "source": "assets/images/comolosupo.png" },
 
                 
         "level_tileset": { "type": "image", "source": "assets/images/terrains.png" },

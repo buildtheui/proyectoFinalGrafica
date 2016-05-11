@@ -49,21 +49,39 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
         case "wall_image":
             if( reg.wallDestroy == 2) {
                 this.kill();
+                hero.walking_speed = 0;
+                reg.modal.showModal("modal6");
+                setTimeout(
+                    function dialog1(){
+                        reg.modal.hideModal("modal6");
+                        hero.walking_speed = 150;
+                    },
+                2000);
             }
             break;
         case "girl_image":
                 hero.walking_speed = 0;
                 reg.modal.showModal("modal4");
-                setTimeout(
-                    function dialog1(){
-                        reg.modal.hideModal("modal4");
-                    },
-                5000);
-                setTimeout(
-                    function dialog2(){
-                        reg.modal.showModal("modal5");
-                    },
-                5000);
+                hideModal(function (){
+                    reg.modal.hideModal("modal4");
+                    showModal(function (){
+                            reg.modal.showModal("modal5");
+                            hideModal(function (){
+                                reg.modal.hideModal("modal5");
+                                showModal(function (){
+                                    reg.modal.showModal("modal7");
+                                    hideModal(function (){
+                                        reg.modal.hideModal("modal7");
+                                        showModal(function (){
+                                            reg.modal.showModal("modal8");
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                });
+                
+                
             break;
             
     }
@@ -231,7 +249,7 @@ function createModals(item, hero) {
                       {
                             type: "image",
                             content: "princess",
-                            offsetY: -70
+                            offsetY: -90
                         }
                     ]
                 });
@@ -242,8 +260,21 @@ function createModals(item, hero) {
                     modalCloseOnInput: false,
                     itemsArr: [
                         {
+                            type: "image",
+                            content: "ahora_no",
+                            offsetY: 0
+                        }
+                    ]
+                });
+            /// ventana modal 6
+            reg.modal.createModal({
+                    type:"modal6",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
                             type: "text",
-                            content: "#%&&/%&/(&//&%&/@!",
+                            content: "Ahora si princesa!\nHe luchado por ti!",
                             fontFamily: "Luckiest Guy",
                             fontSize: 45,
                             color: "0xFEFF49",
@@ -256,4 +287,54 @@ function createModals(item, hero) {
                         }
                     ]
                 });
+            /// ventana modal 7
+            reg.modal.createModal({
+                    type:"modal7",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
+                            type: "text",
+                            content: "Tu solo me salvaste con otras\nintenciones...",
+                            fontFamily: "Luckiest Guy",
+                            fontSize: 30,
+                            color: "0xFEFF49",
+                            offsetY: 50
+                        },
+                      {
+                            type: "image",
+                            content: "princess",
+                            offsetY: -90
+                        }
+                    ]
+                });
+            /// ventana modal 8
+            reg.modal.createModal({
+                    type:"modal8",
+                    includeBackground: true,
+                    modalCloseOnInput: false,
+                    itemsArr: [
+                        {
+                            type: "text",
+                            content: "Programador cansado... FIN",
+                            fontFamily: "Luckiest Guy",
+                            fontSize: 30,
+                            color: "0xFEFF49",
+                            offsetY: 50
+                        },
+                        {
+                            type: "image",
+                            content: "c_l_supo",
+                            offsetY: -150
+                        }
+                    ]
+                });
 };
+
+function hideModal(endFn){
+    var endFn = endFn || function(){};
+    setTimeout(endFn,3000);
+}
+function showModal(endFn){
+    setTimeout(endFn,200);
+}
