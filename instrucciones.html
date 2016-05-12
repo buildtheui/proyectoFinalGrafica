@@ -12,11 +12,6 @@
                         margin: 0px;
                         background-color: gray;
                 }
-                #game-area{
-                        padding: 0 18% 0 18%;
-                        height: 600px;
-                        width: 100%;
-                }
                 
                 </style>
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Luckiest+Guy'>
@@ -61,11 +56,26 @@
                         
                     </nav>
                         <div class="container">
-                                <div class="row">
-                                        <div id="game-area">
-                                        </div>     
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                   <p class="lead text-center">Instrucciones del juego:</p>
+                                    <ol>
+                                        <li>Responde las preguntas del monstruo y el dragon, antes de rescatar la princesa.</li>
+                                        <li>Destruye el muro y rescata la princesa.</li>
+                                    </ol>
                                 </div>
-                                <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                   <p class="lead text-center">Instrucciones tecnicas:</p>
+                                    <ol>
+                                        <li>El juego es responsive, pero solo se puede jugar con el teclado.</li>
+                                        <li>Usa <img src="assets/images/flechas.jpg" alt="teclado" height="200" width="150"> y <img src="assets/images/mouse.png" alt="mouse" height="200" width="200"></li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="row">
                                         <div class="alert alert-danger">
                                                 <ol>
                                                         <li>No es posible correr en chrome si se abre de manera local, por <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a> ya que chrome no permite compartir archivos asincronamente con el protocolo file://  si quiere verlo en chrome, puede entrar a este <a href="http://whispers16.github.io/proyectoFinalGrafica"> <strong>link</strong> </a></li>
@@ -75,26 +85,14 @@
 
                                           
                                         </div>
-                                </div>          
+                                </div>
+                            
+
                         </div>
+
                         <!--librerias javascript -->  
-                        <script type="text/javascript" src="js/phaser.js"></script>
-                        <script type="text/javascript" src="js/modal.js"></script>
                         <script type="text/javascript" src="js/jquery.min.js"></script>
                         <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-                        
-                        <!-- scripts del juego -->
-                        <script src="js/states/BootState.js"></script>
-                        <script src="js/states/LoadingState.js"></script>
-                        <script src="js/states/WorldState.js"></script>
-                                    
-                        
-                        <script src="js/groups/Prefab.js"></script>
-                        <script src="js/groups/Hero.js"></script>
-                        <script src="js/groups/Item.js"></script>
-                        
-                        <!-- donde se ejecuta el juego -->                       
-                        <script type="text/javascript" src="js/main.js"></script>
                 
 	</body>
 </html>

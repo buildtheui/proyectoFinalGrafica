@@ -1,7 +1,7 @@
 var graficaInteractiva = graficaInteractiva || {};
 
 // se crea un objeto game para comenzar el juego y se le añaden los estados de creacion, carga e inicio dell juego
-var game = new Phaser.Game(600, 600, Phaser.CANVAS);
+var game = new Phaser.Game(600, 600, Phaser.AUTO, 'game-area');
 game.state.add("BootState", new graficaInteractiva.BootState());
 game.state.add("LoadingState", new graficaInteractiva.LoadingState());
 game.state.add("WorldState", new graficaInteractiva.WorldState());

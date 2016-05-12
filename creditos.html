@@ -12,11 +12,6 @@
                         margin: 0px;
                         background-color: gray;
                 }
-                #game-area{
-                        padding: 0 18% 0 18%;
-                        height: 600px;
-                        width: 100%;
-                }
                 
                 </style>
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Luckiest+Guy'>
@@ -61,40 +56,34 @@
                         
                     </nav>
                         <div class="container">
-                                <div class="row">
-                                        <div id="game-area">
-                                        </div>     
-                                </div>
-                                <div class="row">
-                                        <div class="alert alert-danger">
-                                                <ol>
-                                                        <li>No es posible correr en chrome si se abre de manera local, por <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a> ya que chrome no permite compartir archivos asincronamente con el protocolo file://  si quiere verlo en chrome, puede entrar a este <a href="http://whispers16.github.io/proyectoFinalGrafica"> <strong>link</strong> </a></li>
-                                                        <li>de manera local por la demora de transferencia de archivos puede que en firefox se pueda trabar un poco, si quiere que sea fluido entre al mismo <a href="http://whispers16.github.io/proyectoFinalGrafica"> <strong>link</strong> </a></li>
-                                                        
-                                                </ol>        
 
-                                          
-                                        </div>
-                                </div>          
+                            <div class="row">
+                                <div class="col-lg-12">
+                                   <p class="lead text-center">Desarrollado por: Fabián Monsalve (fgmonsalveb@unal.edu.co) 2016</p>
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                   <p class="lead text-center">Recursos:</p>
+                                    <ul>
+                                    <li><a href="http://www.mapeditor.org/">Creador de mapas (TILED)</a></li>
+                                    <li><a href="http://phaser.io/">Phaser js</a></li>
+                                    <li><a href="http://i.imgur.com/oorjG.png">Player</a></li>
+                                    <li><a href="http://2.bp.blogspot.com/-032eKLfbpa0/UBQYiI_VTKI/AAAAAAAAAM0/fs40kFvrL-c/s1600/sprites2.png">Princesa</a></li>
+                                    <li><a href="http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/">generador de sprites</a></li>
+                                    <li><a href="http://nightlycoding.com/index.php/2015/02/phaser-io-modal-creator/">libreria para dialogos</a></li>
+                                    <li><a href="http://opengameart.org/">Demas personajes y objetos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+
                         </div>
+
                         <!--librerias javascript -->  
-                        <script type="text/javascript" src="js/phaser.js"></script>
-                        <script type="text/javascript" src="js/modal.js"></script>
                         <script type="text/javascript" src="js/jquery.min.js"></script>
                         <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-                        
-                        <!-- scripts del juego -->
-                        <script src="js/states/BootState.js"></script>
-                        <script src="js/states/LoadingState.js"></script>
-                        <script src="js/states/WorldState.js"></script>
-                                    
-                        
-                        <script src="js/groups/Prefab.js"></script>
-                        <script src="js/groups/Hero.js"></script>
-                        <script src="js/groups/Item.js"></script>
-                        
-                        <!-- donde se ejecuta el juego -->                       
-                        <script type="text/javascript" src="js/main.js"></script>
                 
 	</body>
 </html>
