@@ -1,3 +1,6 @@
+/*
+* Esta es una libreria de dialogos modales para phaser 
+*/
 var gameModal = gameModal || {};
 
 

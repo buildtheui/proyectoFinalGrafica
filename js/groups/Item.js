@@ -1,7 +1,11 @@
+/* 
+* en este archivo, describimos el comportamiento de los items en el mapa, como dragones, el muro, y dialogos
+*/
 var graficaInteractiva = graficaInteractiva || {};
-var reg = { wallDestroy : 0 };
+var reg = { wallDestroy : 0 }; // lo usamos para los dialogos y la informacion de la pared a destruir
 graficaInteractiva.Item = function (game_state, name, position, properties) {
     "use strict";
+    // constructor del item, para poner su posicion, propiedades, movimiento y fisica
     graficaInteractiva.Prefab.call(this, game_state, name, position, properties);
     
     this.anchor.setTo(0.5);
@@ -11,30 +15,23 @@ graficaInteractiva.Item = function (game_state, name, position, properties) {
 };
 
 graficaInteractiva.Item.prototype = Object.create(graficaInteractiva.Prefab.prototype);
+// aqui es donde construimos el item
 graficaInteractiva.Item.prototype.constructor = graficaInteractiva.Item;
 
 // el metodo update() es llamado en cada cuadro
 graficaInteractiva.Item.prototype.update = function () {
     "use strict";
-    // when colliding with hero the item is collected
+    // cuando hay un choque del jugador con el item entonces se llama a la funcion collect_item
     this.game_state.game.physics.arcade.collide(this, this.game_state.groups.heroes, this.collect_item, null, this);
 
 };
 
 graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
     "use strict";
-   /* var stat;
-    // update hero stats according to item
-    
-    for (stat in this.stats) {
-        // update only if the stat is defined for this item
-        if (this.stats.hasOwnProperty(stat) && this.stats[stat]) {
-            hero.stats[stat] += this.stats[stat];
-        }
-    } */
+   // con la libreria modal.js creamos un nuevo objeto modal, para crear los dialogos
     reg.modal = new gameModal(game);
+    // llamamos a la funcion que creara los dialogos
     createModals(item, hero);
-    console.log(hero);
     switch(item.key){
         case "demon_image":
              // si choca con el elemento, el jugador queda quieto hasta que responda la pregunta
@@ -47,9 +44,11 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
             reg.modal.showModal("modal2");
             break;  
         case "wall_image":
+            // si ha respondido la pregunta del dragon y mounstro y choca con la pared entonces esta desaparece
             if( reg.wallDestroy == 2) {
                 this.kill();
                 hero.walking_speed = 0;
+                // comienza la converzacion del jugador con la reina
                 reg.modal.showModal("modal6");
                 setTimeout(
                     function dialog1(){
@@ -60,6 +59,7 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
             }
             break;
         case "girl_image":
+            // cuando el jugador choca con la reina, se crea la converzacion final
                 hero.walking_speed = 0;
                 reg.modal.showModal("modal4");
                 hideModal(function (){
@@ -80,17 +80,16 @@ graficaInteractiva.Item.prototype.collect_item = function (item, hero) {
                             });
                         });
                 });
-                
-                
-            break;
+        break;
             
     }
 };
 
 function createModals(item, hero) {
+   // esta es la duncion que crea los dialogos
    var item = item, hero = hero;
 
-   //// ventana modal 1 ////
+   //// ventana modal 1, conversación 1 ////
     reg.modal.createModal({
             type:"modal1",
             includeBackground: true,
@@ -139,6 +138,7 @@ function createModals(item, hero) {
                     callback: function () {
                         reg.modal.hideModal("modal1");
                         reg.modal.showModal("modal3");
+                        // en caso que responda no muestra game over y reinicia el juego
                         setTimeout(
                             function restart(){
                                 game.state.start("BootState", true, false, "assets/levels/world_level.json", "WorldState")
@@ -149,7 +149,7 @@ function createModals(item, hero) {
             ]
    });
 
-    /// ventana modal 2 ///
+    /// ventana modal 2, conversacion 2 ///
     reg.modal.createModal({
             type:"modal2",
             includeBackground: true,
@@ -199,6 +199,7 @@ function createModals(item, hero) {
                     callback: function () {
                         reg.modal.hideModal("modal2");
                         reg.modal.showModal("modal3");
+                        // en caso que responda no muestra game over y reinicia el juego
                         setTimeout(
                             function restart(){
                                 game.state.start("BootState", true, false, "assets/levels/world_level.json", "WorldState")
@@ -209,7 +210,7 @@ function createModals(item, hero) {
             ]
     });
             
-            /// ventana modal 3
+            /// ventana modal 3, conversación 3 ///
             reg.modal.createModal({
                     type:"modal3",
                     includeBackground: true,
@@ -232,7 +233,7 @@ function createModals(item, hero) {
                     ]
                 });
 
-            /// ventana modal 4
+            /// ventana modal 4, conversación 4 ///
             reg.modal.createModal({
                     type:"modal4",
                     includeBackground: true,
@@ -253,7 +254,7 @@ function createModals(item, hero) {
                         }
                     ]
                 });
-             /// ventana modal 5
+             /// ventana modal 5, conversación 5 /// 
             reg.modal.createModal({
                     type:"modal5",
                     includeBackground: true,
@@ -266,7 +267,7 @@ function createModals(item, hero) {
                         }
                     ]
                 });
-            /// ventana modal 6
+            /// ventana modal 6, conversación 6 ///
             reg.modal.createModal({
                     type:"modal6",
                     includeBackground: true,
@@ -287,7 +288,7 @@ function createModals(item, hero) {
                         }
                     ]
                 });
-            /// ventana modal 7
+            /// ventana modal 7, conversacion 7 ///
             reg.modal.createModal({
                     type:"modal7",
                     includeBackground: true,
@@ -308,7 +309,7 @@ function createModals(item, hero) {
                         }
                     ]
                 });
-            /// ventana modal 8
+            /// ventana modal 8, conversación 8 ///
             reg.modal.createModal({
                     type:"modal8",
                     includeBackground: true,
@@ -332,9 +333,11 @@ function createModals(item, hero) {
 };
 
 function hideModal(endFn){
+    // esta funcion crea un delay de 3 seg antes de cerrar la conversación
     var endFn = endFn || function(){};
     setTimeout(endFn,3000);
 }
 function showModal(endFn){
+    // esta funcion crea un delay de 200 ms para mostrar la conversación
     setTimeout(endFn,200);
 }
